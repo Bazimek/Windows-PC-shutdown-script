@@ -1,6 +1,7 @@
 @echo off
 
-chcp 65001
+:: Nastavení pro české znaky
+chcp 65001>NUL
 
 :: Nastavení a informace
 SET verze=1.0
