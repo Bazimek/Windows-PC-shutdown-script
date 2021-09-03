@@ -1,24 +1,27 @@
 @echo off
 
-:: NastavenÃ­ a informace
+:: Nastaven¡ znak…
+chcp 852>NUL
+
+:: Nastaven¡ a informace
 SET verze=1.0
 SET datum=02.09.2021
 TITLE Shutdown script by Bazim.cz (v%verze% - %datum%)
 
-:: ÃšvodnÃ­ text
-echo 1 = vypnout poÄÃ­taÄ
-echo 2 = zruÅ¡it vypnutÃ­ poÄÃ­taÄe
+:: évodn¡ text
+echo 1 = vypnout poŸ¡taŸ
+echo 2 = zruçit vypnut¡ poŸ¡taŸe
 
-:: VynechÃ¡me Å™Ã¡dek
+:: Vynech me ı dek
 echo.
 
 :: Script
-SET /P prikaz="Vyber pÅ™Ã­kaz: "
+SET /P prikaz="Vyber príkaz: "
 
-:: ZvolÃ­me dle zadÃ¡nÃ­ uÅ¾ivatele
+:: Zvol¡me dle zad n¡ u§ivatele
 IF %prikaz%==1 (
 	cls
-	SET /P cas_do_vypnuti_pred="ÄŒas do vypnutÃ­ (poÄet celÃ½ch hodiny): "
+	SET /P cas_do_vypnuti_pred="¬as do vypnut¡ (poŸet celìch hodiny): "
 	goto kontrola
 )
 
@@ -26,18 +29,18 @@ IF %prikaz%==2 (
 	shutdown.exe /a
 )
 
-:: UkonÄÃ­me script
+:: UkonŸ¡me script
 :konec
 exit
 
-:: Kontrola zda-li dojde k vypnutÃ­ poÄÃ­taÄe za uÅ¾ivatelem zvolenÃ½ Äas
+:: Kontrola zda-li dojde k vypnut¡ poŸ¡taŸe za u§ivatelem zvolenì Ÿas
 :kontrola
 cls
 SET /a cas_do_vypnuti_po=%cas_do_vypnuti_pred%*60*60
 SET /a cas_do_vypnuti_po_minut=%cas_do_vypnuti_pred%*60
-echo PoÄÃ­taÄ bude vypnut za %cas_do_vypnuti_po% sekund (= %cas_do_vypnuti_po_minut%m).
+echo PoŸ¡taŸ bude vypnut za %cas_do_vypnuti_po% sekund (= %cas_do_vypnuti_po_minut%m).
 echo.
-SET /p kontrola="Je to tak sprÃ¡vnÄ›? (a/n): "
+SET /p kontrola="Je to tak spr vnØ? (a/n): "
 
 IF %kontrola%==a (
 	goto vypnout
@@ -45,6 +48,6 @@ IF %kontrola%==a (
 	goto konec
 )
 
-:: NaplÃ¡novÃ¡nÃ­ vypnutÃ­ poÄÃ­taÄe
+:: Napl nov n¡ vypnut¡ poŸ¡taŸe
 :vypnout
 shutdown.exe /s /f /t %cas_do_vypnuti_po%
